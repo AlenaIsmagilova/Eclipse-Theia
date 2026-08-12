@@ -1,0 +1,14 @@
+node_modules/
+lib/
+gen-webpack.config.js
+webpack.config.js
+esbuild.mjs
+browser-app/lib/
+browser-app/src-gen/
+browser-app/webpack.config.js
+browser-app/gen-webpack*.js
+browser-app/esbuild.mjs
+*.log
+.DS_Store
+AGENTS.md 
+EXPLANATION.md

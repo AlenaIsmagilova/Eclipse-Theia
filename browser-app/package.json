@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "notification-center-browser-app",
+  "version": "0.0.0",
+  "dependencies": {
+    "@theia/core": "1.71.2",
+    "@theia/editor": "1.71.2",
+    "@theia/filesystem": "1.71.2",
+    "@theia/markers": "1.71.2",
+    "@theia/messages": "1.71.2",
+    "@theia/monaco": "1.71.2",
+    "@theia/navigator": "1.71.2",
+    "@theia/preferences": "1.71.2",
+    "@theia/process": "1.71.2",
+    "@theia/terminal": "1.71.2",
+    "@theia/workspace": "1.71.2",
+    "notification-center-extension": "0.0.0"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.71.2",
+    "terser-webpack-plugin": "^5.3.14"
+  },
+  "scripts": {
+    "bundle": "yarn rebuild && theia build --mode development",
+    "rebuild": "theia rebuild:browser --cacheRoot ..",
+    "start": "theia start",
+    "watch": "yarn rebuild && theia build --watch --mode development"
+  },
+  "theia": {
+    "target": "browser"
+  }
+}

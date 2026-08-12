@@ -1,0 +1,22 @@
+{
+  "name": "theia-notification-center",
+  "private": true,
+  "engines": {
+    "node": ">=22",
+    "yarn": ">=1.22.0 <2"
+  },
+  "scripts": {
+    "build": "yarn build:extension && yarn build:browser",
+    "build:extension": "yarn workspace notification-center-extension build",
+    "build:browser": "yarn --cwd browser-app bundle",
+    "clean": "yarn workspace notification-center-extension clean",
+    "postinstall": "theia check:theia-version",
+    "start:browser": "yarn --cwd browser-app start",
+    "test": "yarn workspace notification-center-extension test",
+    "watch:browser": "yarn workspace notification-center-extension watch"
+  },
+  "workspaces": [
+    "browser-app",
+    "notification-center"
+  ]
+}

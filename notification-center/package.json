@@ -1,0 +1,41 @@
+{
+  "name": "notification-center-extension",
+  "version": "0.0.0",
+  "description": "Typed backend notifications and a history panel for Eclipse Theia",
+  "license": "MIT",
+  "keywords": [
+    "theia-extension"
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@theia/core": "1.71.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.15.30",
+    "@types/sinon": "^17.0.4",
+    "chai": "^4.5.0",
+    "mocha": "^11.7.1",
+    "rimraf": "^5.0.10",
+    "sinon": "^19.0.5",
+    "source-map-support": "^0.5.21",
+    "typescript": "~5.4.5"
+  },
+  "scripts": {
+    "prepare": "yarn clean && yarn build",
+    "clean": "rimraf lib",
+    "build": "tsc",
+    "test": "yarn build && mocha --require source-map-support/register 'lib/**/*.spec.js'",
+    "watch": "tsc -w"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/notification-center-frontend-module",
+      "backend": "lib/node/notification-center-backend-module"
+    }
+  ]
+}
