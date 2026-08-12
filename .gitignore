@@ -10,5 +10,3 @@ browser-app/gen-webpack*.js
 browser-app/esbuild.mjs
 *.log
 .DS_Store
-AGENTS.md 
-EXPLANATION.md

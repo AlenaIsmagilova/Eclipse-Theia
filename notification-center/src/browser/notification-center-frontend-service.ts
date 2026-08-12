@@ -16,11 +16,6 @@ import {
     NotificationService
 } from '../common/notification-protocol';
 
-/**
- * Owns the single frontend RPC connection and is the client-side source of
- * truth for notification history. Widgets can come and go without affecting
- * toast delivery.
- */
 @injectable()
 export class NotificationCenterFrontendService implements NotificationClient, FrontendApplicationContribution {
 
@@ -126,7 +121,6 @@ export class NotificationCenterFrontendService implements NotificationClient, Fr
         if (this.disposed) {
             return;
         }
-        // Prevent an in-flight, pre-clear snapshot from repopulating the UI.
         this.historyEpoch++;
         this.historyRecords = [];
         this.onDidChangeEmitter.fire(undefined);
@@ -153,8 +147,6 @@ export class NotificationCenterFrontendService implements NotificationClient, Fr
             this.mergeHistory(snapshot);
             this.onDidChangeEmitter.fire(undefined);
         } catch (error) {
-            // History is retried when the RPC connection opens again. Do not
-            // block the rest of the frontend if the backend is temporarily away.
             console.error('Failed to load notification history.', error);
         }
     }
@@ -164,8 +156,6 @@ export class NotificationCenterFrontendService implements NotificationClient, Fr
         for (const record of snapshot) {
             recordsById.set(record.id, record);
         }
-        // Live callbacks may arrive while getHistory is pending. They win over
-        // an older copy from the snapshot and must never produce a second toast.
         for (const record of this.historyRecords) {
             recordsById.set(record.id, record);
         }

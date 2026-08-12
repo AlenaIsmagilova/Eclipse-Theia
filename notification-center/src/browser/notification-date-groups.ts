@@ -20,7 +20,6 @@ const GROUP_ORDER: readonly NotificationDateGroupId[] = [
     'earlier'
 ];
 
-/** Groups records by the browser's local calendar date without mutating them. */
 export function groupNotificationsByDate(
     records: readonly NotificationRecord[],
     now: Date = new Date()
@@ -46,7 +45,6 @@ export function groupNotificationsByDate(
     });
 }
 
-/** Returns the delay until the next local midnight. */
 export function millisecondsUntilNextLocalDay(now: Date = new Date()): number {
     const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
     return Math.max(1, nextDay.getTime() - now.getTime());

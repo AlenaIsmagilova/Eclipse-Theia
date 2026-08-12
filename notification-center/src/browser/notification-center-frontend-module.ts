@@ -8,8 +8,6 @@ import { NotificationCenterContribution } from './notification-center-contributi
 import { NotificationCenterFrontendService } from './notification-center-frontend-service';
 import { NotificationCenterWidget } from './notification-center-widget';
 import { NotificationToastOverlay } from './notification-toast-overlay';
-// CSS is not emitted by tsc. Resolve it from the package source when this
-// compiled module is loaded from lib/browser.
 import '../../src/browser/style/notification-center.css';
 
 export default new ContainerModule(bind => {
